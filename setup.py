@@ -33,14 +33,14 @@ extensions = [
 ]
 setup(
     setup_requires=[
-        'cython>=0.2',
+        'cython>=3.0',
         'numpy>=1.15.1'
     ],
     zip_safe=False,
     name='PyGasMix',  # Required
     packages=['PyGasMix'],
 
-    version='1.2.0',  # Required
+    version='1.2.1',  # Required
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
     package_dir={'PyGasMix': 'PyGasMix'},
     install_requires=['numpy','cython'],  # Optional
