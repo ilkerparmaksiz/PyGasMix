@@ -1,5 +1,6 @@
 from setuptools import setup, Extension
 from Cython.Distutils import build_ext
+from Cython.Build import cythonize
 from setuptools import find_namespace_packages
 import os
 import cython
@@ -33,8 +34,10 @@ extensions = [
 ]
 setup(
     setup_requires=[
-        'cython>=0.2',
-        'numpy>=1.15.1'
+        'cython>=3',
+        'numpy>=1.15.1',
+        'wheel',
+        'setuptools'
     ],
     zip_safe=False,
     name='PyGasMix',  # Required
@@ -49,6 +52,6 @@ setup(
         'PyGasMix': ['./PyGasMix/*.pxd','./PyGasMix/*.pxd'],
         'PyGasMix/Gases': ['./PyGasMix/Gases/*.pxd','./PyGasMix/Gases/gases.npy'],
     },
-    ext_modules = extensions,
+    ext_modules = cythonize(extensions),
     cmdclass={'build_ext': build_ext},
 )
