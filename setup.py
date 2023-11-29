@@ -1,6 +1,5 @@
 from setuptools import setup, Extension
 from Cython.Distutils import build_ext
-from Cython.Build import cythonize
 from setuptools import find_namespace_packages
 import os
 import cython
@@ -9,7 +8,7 @@ import numpy
 from io import open
 
 extensions = [
-    Extension("PyGasMix.Gases.GasUtil",["PyGasMix/Gases/GasUtil.pyx","PyGasMix/Gases/GasUtil.pxd"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
+    Extension("PyGasMix.Gases.GasUtil",["PyGasMix/Gases/GasUtil.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
     Extension("PyGasMix.Gasmix",["PyGasMix/Gasmix.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
     Extension("PyGasMix.Gases.ARGON",["PyGasMix/Gases/ARGON.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
     Extension("PyGasMix.Gases.CF4",["PyGasMix/Gases/CF4.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
@@ -52,6 +51,6 @@ setup(
         'PyGasMix': ['./PyGasMix/*.pxd','./PyGasMix/*.pxd'],
         'PyGasMix/Gases': ['./PyGasMix/Gases/*.pxd','./PyGasMix/Gases/gases.npy'],
     },
-    ext_modules = cythonize(extensions),
+    ext_modules = extensions,
     cmdclass={'build_ext': build_ext},
 )
