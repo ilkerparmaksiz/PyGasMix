@@ -1,6 +1,6 @@
 from setuptools import setup, Extension
 from Cython.Distutils import build_ext
-
+from setuptools import find_namespace_packages
 import os
 import cython
 import os
@@ -8,7 +8,7 @@ import numpy
 from io import open
 
 extensions = [
-    Extension("PyGasMix.Gases.GasUtil",["PyGasMix/Gases/GasUtil.pyx","PyGasMix/Gases/GasUtil.pxd"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
+    Extension("PyGasMix.Gases.GasUtil",["PyGasMix/Gases/GasUtil.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
     Extension("PyGasMix.Gasmix",["PyGasMix/Gasmix.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
     Extension("PyGasMix.Gases.ARGON",["PyGasMix/Gases/ARGON.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
     Extension("PyGasMix.Gases.CF4",["PyGasMix/Gases/CF4.pyx"],include_dirs=[numpy.get_include(),os.getcwd()+'/PyGasMix/']),
@@ -33,14 +33,16 @@ extensions = [
 ]
 setup(
     setup_requires=[
-        'cython>=0.2',
-        'numpy>=1.15.1'
+        'cython>=3',
+        'numpy>=1.15.1',
+        'wheel',
+        'setuptools'
     ],
     zip_safe=False,
     name='PyGasMix',  # Required
-    packages=['PyGasMix'],
+    packages=find_namespace_packages(),
 
-    version='1.2.0',  # Required
+    version='1.2.1',  # Required
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
     package_dir={'PyGasMix': 'PyGasMix'},
     install_requires=['numpy','cython'],  # Optional

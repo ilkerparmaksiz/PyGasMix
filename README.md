@@ -4,8 +4,7 @@ This repository holds the gas functions, gas cross sections, gas objects, and ga
 ** PyGradd is not built yet.
 
 ## Setting up and running instructions.
-There is two methods to do so. In both of them you will need python3+, cython, and numpy installed. Our setup has python 3.6.7, Cython 0.29.3, and numpy 1.16.1.
-
+There is two methods to do so. In both of them you will need python3+, cython, and numpy installed. Tested and works with Python 3.10.9 and Cython 3.0.8 , and Numpy 1.24.2
 ### First method.
 Simply install the module by using pip through the following command. **Note: this method needs a new version of PIP.**
 ```
