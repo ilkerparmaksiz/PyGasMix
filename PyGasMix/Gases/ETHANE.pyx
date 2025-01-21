@@ -1,11 +1,15 @@
 from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
+
 cimport libc.math
+import libc.math
+
 import numpy as np
 cimport numpy as np
 import sys
 from PyGasMix.Gas cimport Gas
 from cython.parallel import prange
 cimport GasUtil
+import GasUtil
 
 sys.path.append('../hdf5_python')
 import cython
@@ -667,14 +671,14 @@ cdef void Gas_ethane(Gas*object):
         if EN > XNUL1[0]:
             object.NullCrossSection[0][I] = GasUtil.CALInelasticCrossSectionPerGasP(EN, NUL1, YNUL1, XNUL1, 1) * 100 * <float>(0.9) * object.ScaleNull[0]
 
-        # LIGHT EMISSION FROM H ALPHA   
-        #   MOHLMMoleculesPerCm3PerGas AND DE HEER  CHEM.PHYS.19(1979)233 
+        # LIGHT EMISSION FROM H ALPHA
+        #   MOHLMMoleculesPerCm3PerGas AND DE HEER  CHEM.PHYS.19(1979)233
         object.NullCrossSection[1][I] = 0.0
         if EN > XNUL2[0]:
             object.NullCrossSection[1][I] = GasUtil.CALInelasticCrossSectionPerGasP(EN, NUL2, YNUL2, XNUL2, 1) * 100 * object.ScaleNull[1]
 
         # LIGHT EMISSION FROM CH2(A2DELTA - X2PI)
-        #  MOHLMMoleculesPerCm3PerGas AND DE HEER  CHEM.PHYS.19(1979)233 
+        #  MOHLMMoleculesPerCm3PerGas AND DE HEER  CHEM.PHYS.19(1979)233
         object.NullCrossSection[2][I] = 0.0
         if EN > XNUL3[0]:
             object.NullCrossSection[2][I] = GasUtil.CALInelasticCrossSectionPerGasP(EN, NUL3, YNUL3, XNUL3, 1) * 100 * object.ScaleNull[2]

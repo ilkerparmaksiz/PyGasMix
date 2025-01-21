@@ -1,5 +1,6 @@
 from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
 
+
 cdef double QLSCALE(double EN, int n, double Y[], double X[]):
     cdef double YXJ, YXJ1, XNJ, XNJ1, A, B, R
     cdef int J

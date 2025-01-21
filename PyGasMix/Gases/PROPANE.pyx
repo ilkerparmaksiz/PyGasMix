@@ -1,11 +1,16 @@
 from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
+
 cimport libc.math
+import libc.math
+
 import numpy as np
 cimport numpy as np
 import sys
 from PyGasMix.Gas cimport Gas
 from cython.parallel import prange
 cimport GasUtil
+import GasUtil
+
 
 sys.path.append('../hdf5_python')
 import cython
@@ -701,7 +706,7 @@ cdef void Gas_propane(Gas*object):
         #  LOAD NULL COLLISIONS
         #
         # LIGHT EMISSION FROM H ALPHA
-        # MOHLMMoleculesPerCm3PerGas AND DE HEER CHEM.PHYS.19(1979)233      
+        # MOHLMMoleculesPerCm3PerGas AND DE HEER CHEM.PHYS.19(1979)233
         object.NullCrossSection[0][I] = 0.0
         if EN > XNUL1[0]:
             object.NullCrossSection[0][I] = GasUtil.CALInelasticCrossSectionPerGasP(EN, NUL1, YNUL1, XNUL1, 1) * 100 * <float>(0.9) * object.ScaleNull[0]

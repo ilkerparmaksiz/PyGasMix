@@ -1,1 +1,2 @@
 cimport Gas
+import Gas

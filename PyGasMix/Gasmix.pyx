@@ -1,3 +1,24 @@
+from Gases.CF4 import Gas_cf4
+from Gases.ARGON import Gas_argon
+from Gases.HELIUM4 import Gas_helium4
+from Gases.HELIUM3 import Gas_helium3
+from Gases.NEON import Gas_neon
+from Gases.KRYPTON import Gas_krypton
+from Gases.XENON import Gas_xenon
+from Gases.CH4 import Gas_ch4
+from Gases.ETHANE import Gas_ethane
+from Gases.PROPANE import Gas_propane
+from Gases.ISOBUTANE import Gas_isobutane
+from Gases.CO2 import Gas_co2
+from Gases.H2O import Gas_h2o
+from Gases.OXYGEN import Gas_oxygen
+from Gases.NITROGEN import Gas_nitrogen
+from Gases.HYDROGEN import Gas_hydrogen
+from Gases.DEUTERIUM import Gas_deuterium
+from Gases.DME import Gas_DME
+from Gases.XENONMERT import Gas_xenonmert
+from libc.string import memset
+
 from Gases.CF4 cimport Gas_cf4
 from Gases.ARGON cimport Gas_argon
 from Gases.HELIUM4 cimport Gas_helium4
@@ -19,6 +40,8 @@ from Gases.DME cimport Gas_DME
 from Gases.XENONMERT cimport Gas_xenonmert
 from libc.string cimport memset
 from PyGasMix.Gas cimport Gas
+
+
 
 cdef void callGASF(Gas*GAS, Params):
     if GAS.GasNumber == 1:

@@ -1,11 +1,16 @@
 from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
+
 cimport libc.math
+import libc.math
+
 import numpy as np
 cimport numpy as np
 import sys
 from PyGasMix.Gas cimport Gas
 from cython.parallel import prange
 cimport GasUtil
+import GasUtil
+
 
 sys.path.append('../hdf5_python')
 import cython
@@ -142,7 +147,7 @@ cdef void Gas_isobutane(Gas*object):
 
             object.PenningFraction[j][i]
 
-    
+
     for i in range(9,24):
         object.PenningFraction[0][i]=0.0
         object.PenningFraction[1][i]=1.0
@@ -187,12 +192,12 @@ cdef void Gas_isobutane(Gas*object):
     # RENORMALISE GROUND STATE POPULATION ( GIVES CORRECTION THAT
     # ALLOWS FOR VIBRATIONAL EXCITATION FROM EXCITED VIBRATIONAL STATES)
     APOPGS=1.0
-    
+
     cdef double EN, GAMMA1, GAMMA2, BETA, BETA2, QMT, ElasticCrossSection, PQ[3], X1, X2, QBB = 0.0, CrossSectionSum, EFAC,F[13],QSNG,TotalCrossSectionEXC,QTRP
 
     F = [<float>(0.00131),<float>(0.0150),<float>(0.114),<float>(0.157),<float>(0.171),<float>(0.188),<float>(0.205),<float>(0.193),<float>(0.162),<float>(0.103),<float>(0.067),<float>(0.064),<float>(0.028),]
     cdef int FI
-    
+
     for I in range(4000):
         EN = object.EG[I]
         GAMMA1 = (ElectronMass2 + 2 * EN) / ElectronMass2
@@ -227,9 +232,9 @@ cdef void Gas_isobutane(Gas*object):
             # AT AN ENERGY OFFSET BY THE IONISATION ENERGY
             if EN > 2*object.IonizationEnergy[0]:
                 object.PEIonizationCrossSection[0][I] = object.PEElasticCrossSection[1][I-IOFFION[0]]
-        
+
         # CALCULATE IONISATION-EXCITATION AND SPLIT IONISATION INTO
-        # IONISATION ONLY AND IONISATION +EXCITATION        
+        # IONISATION ONLY AND IONISATION +EXCITATION
         object.IonizationCrossSection[1][I] = 0.0
         object.PEIonizationCrossSection[1][I] = 0.5
         if object.WhichAngularModel ==2:

@@ -1,11 +1,15 @@
 from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
+
 cimport libc.math
+import libc.math
+
 import numpy as np
 cimport numpy as np
 import sys
 from PyGasMix.Gas cimport Gas
 from cython.parallel import prange
 cimport GasUtil
+import GasUtil
 
 sys.path.append('../hdf5_python')
 import cython
@@ -138,7 +142,7 @@ cdef void Gas_DME(Gas*object):
         object.InelasticCrossSectionPerGas[6][I] = 0.0
         if EN >object.EnergyLevels[6]:
             object.InelasticCrossSectionPerGas[6][I] = GasUtil.CALIonizationCrossSectionREG(EN, NEXC, YEXC, XEXC)
-            
+
         object.InelasticCrossSectionPerGas[7][I] = 0.0
         if EN >object.EnergyLevels[7]:
             object.InelasticCrossSectionPerGas[7][I] = GasUtil.CALIonizationCrossSectionREG(EN, NEXC1, YEXC1, XEXC1)
@@ -156,6 +160,3 @@ cdef void Gas_DME(Gas*object):
             object.N_Inelastic = J
             break
     return
-            
-
-
