@@ -1,11 +1,14 @@
-from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow,log10
+from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
+
 cimport libc.math
+
 import numpy as np
 cimport numpy as np
 import sys
 from PyGasMix.Gas cimport Gas
 from cython.parallel import prange
 from PyGasMix.Gases cimport GasUtil
+
 
 sys.path.append('../hdf5_python')
 import cython

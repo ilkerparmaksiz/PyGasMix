@@ -1,5 +1,7 @@
 from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
+
 cimport libc.math
+
 import numpy as np
 cimport numpy as np
 import sys
@@ -220,24 +222,10 @@ cdef void Gas_deuterium(Gas*object):
             for J in range(13):
                 object.Q[1][I]-=object.InelasticCrossSectionPerGas[J][I]
 
-    
+
 
     for J in range(object.N_Inelastic):
         if object.FinalEnergy <= object.EnergyLevels[J]:
             object.N_Inelastic = J
             break
     return
-
-
-
-
-
-
-
-
-
-
-
-
-
-

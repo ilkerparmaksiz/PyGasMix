@@ -1,4 +1,5 @@
 from libc.math cimport sin, cos, acos,asin, log,sqrt,exp,atan
+
 import math
 import sys
 from PyGasMix.Gas cimport Gas
@@ -1042,4 +1043,3 @@ cdef void Gas_argon(Gas *object):
         if object.FinalEnergy <= object.EnergyLevels[j]:
             object.N_Inelastic = j
             break
-
