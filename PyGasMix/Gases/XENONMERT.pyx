@@ -1,7 +1,6 @@
 from libc.math cimport sin, cos, acos, asin, log, sqrt, exp, pow
 
 cimport libc.math
-import libc.math
 
 import numpy as np
 cimport numpy as np
